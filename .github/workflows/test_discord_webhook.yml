@@ -1,0 +1,71 @@
+# REQUIREMENT : GitHub Action secret :  TEST_DISCORD_WEBHOOK_URL : a webhook url created from discord
+name: test_discord_webhook
+
+on:
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  webhook_test_job:
+    name: Test GitHub Actions discord webhook
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_LOGO: https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Octicons-mark-github.svg/1200px-Octicons-mark-github.svg.png
+    steps:
+      - name: testA - send two line content
+        uses: tsickert/discord-webhook@v7.0.0
+        with:
+          webhook-url: ${{ secrets.TEST_DISCORD_WEBHOOK_URL }}
+          username: "TDiscord_WH_A"
+          avatar-url: ${{ env.GITHUB_LOGO }}
+          content: |
+            test_discord_webhook.yml - testA
+            content ⚠️ line 2 with emoji
+
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Read report700 content as env var FILE_CONTENT
+        run: |
+          {
+            echo 'FILE_CONTENT<<EOF'
+            cat data/report_700cars.md
+            echo ''
+            echo 'EOF'
+          } >> "$GITHUB_ENV"
+
+      - name: testB - send a report700 file as content to discord channel
+        uses: tsickert/discord-webhook@v7.0.0
+        with:
+          webhook-url: ${{ secrets.TEST_DISCORD_WEBHOOK_URL }}
+          username: "TDiscord_WH_B"
+          avatar-url: ${{ env.GITHUB_LOGO }}
+          content: ${{ env.FILE_CONTENT }}
+
+      - name: Read report_one_line_84cars content as env var FILE_CONTENT_BIS
+        run: |
+          {
+            echo 'FILE_CONTENT_BIS<<EOF'
+            cat data/report_one_line_84cars.txt
+            echo ''
+            echo 'EOF'
+          } >> "$GITHUB_ENV"
+
+      - name: testC - send a content by env value and a file by name
+        uses: tsickert/discord-webhook@v7.0.0
+        with:
+          webhook-url: ${{ secrets.TEST_DISCORD_WEBHOOK_URL }}
+          username: "TDiscord_WH_C"
+          avatar-url: ${{ env.GITHUB_LOGO }}
+          content: ${{ env.FILE_CONTENT_BIS }}
+          filename: "data/report_2564cars.md"
+
+# target action warns in GitHub job execution:
+#
+#  This action executes discord webhooks. Discord has a lot of conditions on the proper structure of webhooks. For a full list of those conditions, please see: https://discord.com/developers/docs/resources/webhook#execute-webhook.
+#  When debugging this workflow, please be sure to check the status code and the message and check for answers from discord
+#  initially. If you believe that this action failed because of a bug, or you would like to add functionality,
+#  please feel free to open an issue in https://github.com/tsickert/discord-webhook/issues.
+#  Thanks for using this action!
+##
+# Webhook returned 204 with message: b''. Please see discord documentation at https://discord.com/developers/docs/resources/webhook#execute-webhook for more information

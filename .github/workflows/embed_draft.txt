@@ -1,0 +1,30 @@
+# embed not working
+###################
+#     - name: Send a MULTI-LINES embed-description to discord channel NOT WORKING
+#       uses: tsickert/discord-webhook@v7.0.0
+#       with:
+#         webhook-url: ${{ secrets.TEST_DISCORD_WEBHOOK_URL }}
+#         embed-title: "Rapport quotidien SANS filename KO"
+#         embed-description: ${{ env.FILE_CONTENT }}
+#         embed-url: "https://umami.is/"
+#         embed-image-url: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Wikipedia_logo_%28svg%29.svg/1250px-Wikipedia_logo_%28svg%29.svg.png"
+#         embed-footer-text: "TGAW1 my embed-footer-text"
+
+#     - name: Discord Webhook Action With Embed  NOT WORKING
+#       uses: tsickert/discord-webhook@v7.0.0
+#       with:
+#         webhook-url: ${{ secrets.TEST_DISCORD_WEBHOOK_URL }}
+#         username: Bill
+#         avatar-url: https://cdn.discordapp.com/avatars/742807869023322232/dd41912939ffccbea0276f70688fa0ec.webp?size=256
+#         embed-title: "Foo"
+#         embed-url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+#         embed-description: "Bar [test](https://google.com)"
+#         embed-author-name: "Bill"
+#         embed-author-icon-url: "https://cdn.discordapp.com/avatars/742807869023322232/dd41912939ffccbea0276f70688fa0ec.webp?size=256"
+#         embed-author-url: "https://google.com"
+#         embed-thumbnail-url: "https://cdn.discordapp.com/avatars/742807869023322232/dd41912939ffccbea0276f70688fa0ec.webp?size=256"
+#         embed-image-url: "https://cdn.discordapp.com/avatars/742807869023322232/dd41912939ffccbea0276f70688fa0ec.webp?size=256"
+#         embed-footer-icon-url: "https://cdn.discordapp.com/avatars/742807869023322232/dd41912939ffccbea0276f70688fa0ec.webp?size=256"
+#         embed-footer-text: "Foot text [test](https://google.com)"
+#         embed-color: 15430476
+#         embed-timestamp: "2021-09-24T02:17:53+0000"
