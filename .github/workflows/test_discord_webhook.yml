@@ -16,7 +16,7 @@ jobs:
         uses: tsickert/discord-webhook@v7.0.0
         with:
           webhook-url: ${{ secrets.TEST_DISCORD_WEBHOOK_URL }}
-          username: "TDiscord_WH_A"
+          username: "T10cord_WH_A"
           avatar-url: ${{ env.GITHUB_LOGO }}
           content: |
             test_discord_webhook.yml - testA
@@ -38,7 +38,7 @@ jobs:
         uses: tsickert/discord-webhook@v7.0.0
         with:
           webhook-url: ${{ secrets.TEST_DISCORD_WEBHOOK_URL }}
-          username: "TDiscord_WH_B"
+          username: "T10cord_WH_B"
           avatar-url: ${{ env.GITHUB_LOGO }}
           content: ${{ env.FILE_CONTENT }}
 
@@ -55,7 +55,7 @@ jobs:
         uses: tsickert/discord-webhook@v7.0.0
         with:
           webhook-url: ${{ secrets.TEST_DISCORD_WEBHOOK_URL }}
-          username: "TDiscord_WH_C"
+          username: "T10cord_WH_C"
           avatar-url: ${{ env.GITHUB_LOGO }}
           content: ${{ env.FILE_CONTENT_BIS }}
           filename: "data/report_2564cars.md"
